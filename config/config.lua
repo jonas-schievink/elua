@@ -211,7 +211,7 @@ function compile_board( fname, boardname )
   local cpulist = bd.get_all_cpus()
   if not utils.array_element_index( cpulist, desc.cpu:upper() ) then
     io.write( utils.col_red( "[CONFIG] Allowed CPUS: " ) )
-    for i = 1, #cpulist do io.write( utils.col_red( cpu_list[ i ] .. " " ) ) end
+    for i = 1, #cpulist do io.write( utils.col_red( cpulist[ i ] .. " " ) ) end
     print ""
     return false, sf( "unknown cpu '%s'", desc.cpu )
   end
@@ -229,7 +229,7 @@ function compile_board( fname, boardname )
   plconf.add_platform_configs( configs, boardname, desc.cpu )
 
   -- Do we need to include any configured headers?
-  if type( desc.headers ) == "table" and #desc.headers > 0 then 
+  if type( desc.headers ) == "table" and #desc.headers > 0 then
     for _, h in pairs( desc.headers ) do
       header = header .. "#include " .. h .. "\n"
     end
@@ -295,4 +295,3 @@ function compile_board( fname, boardname )
   -- board (this information is needed by the builder) and the build information
   return { header = header, cpu = desc.cpu, multi_alloc = multi_alloc, build = desc.build }
 end
-
