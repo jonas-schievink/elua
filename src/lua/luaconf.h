@@ -290,7 +290,7 @@
 ** CHANGE it if you need longer lines.
 */
 #define LUA_MAXINPUT	128
-               
+
 
 /*
 @@ lua_readline defines how to show a prompt and then read a line from
@@ -558,10 +558,10 @@
 
 /* Define LUA_NUMBER_INTEGRAL to produce a system that uses no
    floating point operations by changing the type of Lua numbers from
-   double to long.  It implements division and modulus so that 
+   double to long.  It implements division and modulus so that
 
-   x == (x / y) * y + x % y.  
-   
+   x == (x / y) * y + x % y.
+
    The exponentiation function returns zero for negative exponents.
    Defining LUA_NUMBER_INTEGRAL also removes the difftime function,
    and the math module should not be used.  The string.format function
@@ -872,16 +872,18 @@ union luai_Cast { double l_d; long l_l; };
 ** without modifying the main part of the file.
 */
 
+/* FIXME: Why is this even here? It makes including <stdint.h> impossible!
 #if !defined(LUA_CROSS_COMPILER)
 typedef short int16_t;
 typedef long int32_t;
 #endif
+*/
 
 /* If you define the next macro you'll get the ability to set rotables as
    metatables for tables/userdata/types (but the VM might run slower)
 */
 #if (LUA_OPTIMIZE_MEMORY == 2) && !defined(LUA_CROSS_COMPILER)
-#define LUA_META_ROTABLES 
+#define LUA_META_ROTABLES
 #endif
 
 #if LUA_OPTIMIZE_MEMORY == 2 && defined(LUA_USE_POPEN)
