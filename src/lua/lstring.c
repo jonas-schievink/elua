@@ -107,7 +107,7 @@ static int lua_is_ptr_in_ro_area(const char *p) {
 #ifdef LUA_CROSS_COMPILER
   return 0;
 #else
-  return p >= &stext && p <= &etext;
+  return 0;//p >= &stext && p <= &etext;
 #endif
 }
 
@@ -144,4 +144,3 @@ Udata *luaS_newudata (lua_State *L, size_t s, Table *e) {
   G(L)->mainthread->next = obj2gco(u);
   return u;
 }
-
