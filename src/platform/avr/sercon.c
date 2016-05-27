@@ -36,6 +36,7 @@ void sercon_init() {
     UCSR0B = (1 << RXEN0) | (1 << TXEN0);
     UCSR0C = (1 << UCSZ00) | (1 << UCSZ01);
 
+    // currently leaks the allocated memory
     fdevopen(stdout_putc, stdin_getc);
 }
 

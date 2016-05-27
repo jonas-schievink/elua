@@ -6,7 +6,7 @@ specific_files = utils.prepend_path( specific_files, "src/platform/" .. platform
 local stdext_include = sf( "src/platform/%s/stdext/stdext.h", platform )
 local stdext_path = sf( "src/platform/%s/stdext", platform )
 local mcuflag = '-mmcu='..comp.cpu:lower()
-local ltoflag = ''--'-flto'
+local ltoflag = '-flto'
 
 -- Configure C compiler and Linker flags
 addcf( { '-g','-ffunction-sections','-fdata-sections','-fno-strict-aliasing','-Wall',ltoflag,mcuflag,'-include',stdext_include,'-I',stdext_path } )
