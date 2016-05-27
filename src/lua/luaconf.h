@@ -883,7 +883,7 @@ typedef long int32_t;
    metatables for tables/userdata/types (but the VM might run slower)
 */
 #if (LUA_OPTIMIZE_MEMORY == 2) && !defined(LUA_CROSS_COMPILER)
-#define LUA_META_ROTABLES
+//#define LUA_META_ROTABLES
 #endif
 
 #if LUA_OPTIMIZE_MEMORY == 2 && defined(LUA_USE_POPEN)
